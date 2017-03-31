@@ -1,11 +1,10 @@
 command: "date +\"%a %d %b\""
 
-refreshFrequency: 10000
+refreshFrequency: 720000 # 12hours
 
 render: (output) ->
   """
-  <link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.min.css" />
-  <div class="cal"
+ <div class="cal"
     <span></span>
     <span class="icon"></span>
   </div>
@@ -23,4 +22,5 @@ style: """
   font: 10px Input
   right: 70px
   top: 6px
+  font-family: 'Hack'
 """

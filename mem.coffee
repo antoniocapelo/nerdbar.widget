@@ -4,8 +4,7 @@ refreshFrequency: 30000 # ms
 
 render: (output) ->
   """
-  <link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.min.css" />
-  <div class="mem"
+ <div class="mem"
     <span></span>
     <span class="icon"></span>
   </div>
@@ -23,4 +22,5 @@ style: """
   font: 10px Input
   right: 215px
   top: 6px
+  font-family: 'Hack'
 """

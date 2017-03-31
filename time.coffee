@@ -1,11 +1,10 @@
 command: "date +\"%H:%M\""
 
-refreshFrequency: 10000 # ms
+refreshFrequency: 30000 # uptade time every 30s
 
 render: (output) ->
   """
-  <link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.min.css" />
-  <div class="time"
+ <div class="time"
     <span></span>
     <span class="icon"></span>
   </div>
@@ -23,4 +22,5 @@ style: """
   font: 10px Input
   right: 10px
   top: 6px
+  font-family: 'Hack'
 """

@@ -4,8 +4,7 @@ refreshFrequency: 1000 # ms
 
 render: (output) ->
   """
-  <link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.min.css" />
-  <div class="np"
+ <div class="np"
     <span></span>
     <span class="icon"></span>
   </div>

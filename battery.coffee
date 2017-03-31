@@ -1,10 +1,9 @@
 command: "pmset -g batt | egrep '([0-9]+\%).*' -o --colour=auto | cut -f1 -d';'"
 
-refreshFrequency: 15000 # ms
+refreshFrequency: 30000 # ms
 
 render: (output) ->
   """
-  <link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.min.css" />
   <div class="battery"
     <span></span>
     <span class="icon"></span>
@@ -36,4 +35,5 @@ style: """
   top: 7px
   right: 160px
   color: #d5c4a1
+  font-family: 'Hack'
 """

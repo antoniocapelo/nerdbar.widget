@@ -1,10 +1,9 @@
 command: "ESC=`printf \"\e\"`; ps -A -o %cpu | awk '{s+=$1} END {printf(\"%.2f\",s/8);}'"
 
-refreshFrequency: 2000 # ms
+refreshFrequency: 10000 # ms
 
 render: (output) ->
   """
-  <link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.min.css" />
   <div class="cpu"
     <span></span>
     <span class="icon"></span>
@@ -23,4 +22,5 @@ style: """
   font: 10px Input
   right: 265px
   top: 6px
+  font-family: 'Hack'
 """
