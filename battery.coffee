@@ -4,15 +4,15 @@ refreshFrequency: 30000 # ms
 
 render: (output) ->
   """
-  <div class="battery"
-    <span></span>
+  <div class="battery">
     <span class="icon"></span>
+    <span class="value"></span>
   </div>
   """
 
 update: (output, el) ->
     bat = parseInt(output)
-    $(".battery span:first-child", el).text("  #{output}")
+    $(".battery span.value", el).text("  #{output}")
     $icon = $(".battery span.icon", el)
     $icon.removeClass().addClass("icon")
     $icon.addClass("fa #{@icon(bat)}")

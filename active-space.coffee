@@ -4,15 +4,15 @@ refreshFrequency: 1000 # ms
 
 render: (output) ->
   """
- <div class="ac"
-    <span></span>
-    <span class="icon"></span>
+ <div class="active-space">
+    <span class="icon icone-space"></span>
+    <span class="value"></span>
   </div>
   """
 
 update: (output, el) ->
-    $(".ac span:first-child", el).text(" #{output}")
-    $icon = $(".ac span.icon", el)
+    $(".active-space span.value", el).text(" #{output}")
+    $icon = $(".active-space span.icon", el)
     $icon.removeClass().addClass("icon icon-space")
     $icon.addClass("fa #{@icon(output)}")
 

@@ -4,14 +4,14 @@ refreshFrequency: 30000 # uptade time every 30s
 
 render: (output) ->
   """
- <div class="time"
-    <span></span>
+ <div class="time">
     <span class="icon"></span>
+    <span class="value"></span>
   </div>
   """
 
 update: (output, el) ->
-    $(".time span:first-child", el).text("  #{output}")
+    $(".time span.value", el).text("  #{output}")
     $icon = $(".time span.icon", el)
     $icon.removeClass().addClass("icon")
     $icon.addClass("fa fa-clock-o")

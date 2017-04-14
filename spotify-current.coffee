@@ -1,17 +1,11 @@
+command: "osascript /usr/local/bin/currentTrack.scpt"
 command: """
-read -r running <<<"$(ps -ef | grep \"MacOS/Spotify\" | grep -v \"grep\" | wc -l)" &&
-test $running != 0 &&
-IFS='|' read -r theArtist theName <<<"$(osascript <<<'tell application "Spotify"
-        set theTrack to current track
-        set theArtist to artist of theTrack
-        set theName to name of theTrack
-        return theArtist & "|" & theName
-    end tell')" &&
-if [ -z "$theArtist" ]
+IFS="++" read -r type track <<<"$(osascript /usr/local/bin/currentTrack.scpt)" &&
+if [ -z "$type" ]
 then
     echo ""
 else
-    echo "$theArtist - $theName" || echo "Not Connected To Spotify"
+    echo "$type ++ $track"
 fi
 """
 
@@ -19,34 +13,36 @@ refreshFrequency: 5000 # ms
 
 render: (output) ->
   """
- <div class="np"
-    <span></span>
+ <div class="current-track">
     <span class="icon"></span>
+    <span class="track-name"></span>
   </div>
   """
 
 update: (output, el) ->
-    $(".np span:first-child", el).text("  #{output}")
-    $icon = $(".np span.icon", el)
-    $icon.removeClass().addClass("icon")
-    $icon.addClass("fa #{@icon(output)}")
+    str = output.split('++')
+    $(".current-track .track-name", el).text(str[1])
+    $icon = $(".current-track span.icon", el)
+    $icon.addClass("fa #{@icon(str[0])}")
 
 icon: (status) =>
-    return if !status.length
-        ""
-    else
-        "fa-spotify"
+    return "fa-" + status
 
 style: """
   -webkit-font-smoothing: antialiased
   text-align: center
   color: #d5c4a1
-  font: 10px Input
-  height: 16px
+  font: 9px Input
+  height: 22px;
+  line-height: 22px;
   left: 25%
   overflow: hidden
   text-overflow: ellipsis
   top: 8px
   width: 50%
   font-family: 'Hack'
+  top: 0;
+  .icon {
+      margin-right: 5px
+  }
 """

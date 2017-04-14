@@ -4,16 +4,15 @@ refreshFrequency: 10000 # ms
 
 render: (output) ->
   """
-  <div class="cpu"
-    <span></span>
+  <div class="cpu">
     <span class="icon"></span>
+    <span class="value"></span>
   </div>
   """
 
 update: (output, el) ->
-    $(".cpu span:first-child", el).text("  #{output}")
+    $(".cpu span.value", el).text("  #{output}")
     $icon = $(".cpu span.icon", el)
-    $icon.removeClass().addClass("icon")
     $icon.addClass("fa fa-bar-chart")
 
 style: """
